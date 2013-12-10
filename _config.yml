@@ -1,0 +1,24 @@
+url: http://aleksandrov.ws
+name: aleksandrov.ws
+markdown: redcarpet
+pygments: true
+# destination: public
+permalink: pretty
+
+theme:
+  name: Evgeny Aleksandrov
+  whoyouare: iOS developer
+  email: evgeny@aleksandrov.ws
+  
+  social:
+    github: ealeksandrov
+    # bitbucket: ealeks
+    # stackexchange: 348619
+    # stackoverflow: 348619
+    twitter: ealeksandrov
+    # facebook: zuck
+    # linkedin: ealeksandrov
+    gplus: 106054359575752422060
+
+  # Google Analytics key, leave blank to ignore
+  google_analytics_key: UA-xxxx-x

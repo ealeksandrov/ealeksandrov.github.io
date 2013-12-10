@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{{ site.theme.name }} - {{ page.title }}</title>
+	    <meta name="author" content="{{ site.theme.name }}" />
+	    <meta name="description" content="The blog of {{ site.theme.name }}" />
+		
+		<link href="https://plus.google.com/{{ site.theme.social.gplus }}/" rel="author"/>
+		
+		<link rel="shortcut icon" href="/static/favicon.png">
+		<link rel="apple-touch-icon" href="/static/apple-touch-icon.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="/static/apple-touch-icon-72x72.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="/static/apple-touch-icon-114x114.png">
+		<link rel="alternate" type="application/rss+xml" title="{{ site.theme.name }}" href="{{site.url}}/atom.xml" />
+		
+		<!--[if lt IE 9]>
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+			
+        <!-- all base CSS -->
+        <link rel="stylesheet" href="/static/all.css">		
+		<!-- Font Awesome -->
+		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+
+    </head>
+    <body>
+		
+		<div class="site container">
+		  <div class="sixteen columns">
+            <div class="header">
+              <h1 class="title"><a href="/">{{ site.name }}</a></h1>
+              <a class="extra" href="/">home</a>
+            </div>
+
+            {{ content }}
+
+            <div class="footer">
+              {% include footer.html %}
+            </div>
+		  </div><!-- /sixteen columns -->
+		</div><!-- /site container -->
+
+		{% include analytics.html %}
+    </body>
+</html>
