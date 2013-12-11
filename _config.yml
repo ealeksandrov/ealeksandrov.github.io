@@ -2,7 +2,6 @@ url: http://aleksandrov.ws
 name: aleksandrov.ws
 markdown: redcarpet
 pygments: true
-# destination: public
 permalink: pretty
 
 theme:
@@ -12,13 +11,16 @@ theme:
   
   social:
     github: ealeksandrov
-    # bitbucket: ealeks
-    # stackexchange: 348619
-    # stackoverflow: 348619
+    bitbucket: ealeks
+    skype: evgeny-aleksandrov # ?userinfo
+	stackexchange: 447136
+    stackoverflow: 840588
     twitter: ealeksandrov
-    # facebook: zuck
-    # linkedin: ealeksandrov
+    facebook: evgeny.aleksandrov.14
+    vk: 8475152
+	linkedin: evgeny-aleksandrov/62/680/956
     gplus: 106054359575752422060
 
   # Google Analytics key, leave blank to ignore
-  google_analytics_key: UA-xxxx-x
+  google_analytics_key: UA-46367444-1
+  google_analytics_URL: aleksandrov.ws
