@@ -5,11 +5,11 @@ date: 2013-09-12 11:50:00 +0400
 ---
 
 
-I am mobile apps developer. Quite frequently I need some backend service to manage user data in remote database. Of course, one can use some BaaS ([Parse](https://parse.com/), [Backendless](https://backendless.com/), etc…). But good own solution is always more convenient and pratical.
+I am mobile app developer. I need some backend service to manage user data in remote databases quite frequently. Of course, I could use some BaaS ([Parse](https://parse.com/), [Backendless](https://backendless.com/), etc…). But good own solution is always a more convenient and practical choice.
 
-And I decided to explore a completely unknown to me technologies, which are now very popular and are positioned as easily assimilated by newcomers and do not require in-depth knowledge and experience to implement large-scale projects.
+I decided to explore completely unknown technologies, which are now very popular and are positioned as easily assimilated by newcomers and do not require in-depth knowledge and experience to implement large-scale projects.
 
-This article will consider building a REST API for mobile applications using [Node.js](http://nodejs.org/) and [Express.js](http://expressjs.com/) framework with [Mongoose.js](http://mongoosejs.com/) for working with [MongoDB](http://www.mongodb.org/). For access control - OAuth 2.0 will be used with help of [OAuth2orize](https://github.com/jaredhanson/oauth2orize) and [Passport.js](http://passportjs.org/).
+This article will consider building a REST API for mobile applications using [Node.js](http://nodejs.org/) and [Express.js](http://expressjs.com/) framework with [Mongoose.js](http://mongoosejs.com/) for working with [MongoDB](http://www.mongodb.org/). For access control we'll use OAuth 2.0, with the help of [OAuth2orize](https://github.com/jaredhanson/oauth2orize) and [Passport.js](http://passportjs.org/).
 
 ##Contents
 
@@ -21,14 +21,14 @@ This article will consider building a REST API for mobile applications using [No
 
 <!-- more -->
 
-I am working in OSX. IDE is [JetBrains WebStorm](http://www.jetbrains.com/webstorm/).
+I am working on OSX. IDE is [JetBrains WebStorm](http://www.jetbrains.com/webstorm/).
 
-Final project you can grab from [GitHub](https://github.com/ealeksandrov/NodeAPI). For installation of all modules run `npm install` in projects folder.
+You can grab a final project from [GitHub](https://github.com/ealeksandrov/NodeAPI). Run `npm install` in projects folder for installation of all required modules.
 
 ##1. Node.js + Express.js, simple web-server
-Node.js has a non-blocking i/o. That's great for API services, which will be accessed by many clients. Express.js - advanced, lightweight framework that allows you to quickly describe all the API endpoints, needs to handle. It also supports many useful modules.
+Node.js has a non-blocking i/o. That's great for API services which will be accessed by many clients. Express.js is an advanced, lightweight framework that allows us to quickly describe all the needed API endpoints. It also supports many useful modules.
 
-Let's create a new project with a single file `server.js`. Since the application will rely entirely on Express.js, let's also install it. Installing third-party modules through Node Package Manager is simple: `npm install modulename` in the project folder.
+Let's create a new project with a single file `server.js`. Since the application will rely on Express.js, we'll  install it. Installing third-party modules through Node Package Manager is simple: `npm install modulename` in the project folder.
 
 {% highlight bash %}
 cd NodeAPI
@@ -46,7 +46,7 @@ app.listen(1337, function(){
 });
 {% endhighlight %}
 
-Run the application through the IDE or console (`node server.js`). This code will create a web server on `localhost:1337`. It will displays a message `Cannot GET /`. This is because we haven't configured any routes yet. Next, let's create some routes and configure basic settings of Express.
+Run the application through the IDE or console (`node server.js`). This code will create a web server on `localhost:1337`. It now displays a message `Cannot GET /`. This is because we haven't configured any routes yet. Next, let's create some routes and configure basic settings of Express.
 
 {% highlight js %}
 var express         = require('express');
@@ -74,7 +74,7 @@ Now `localhost:1337/api` returns our message (handled by `app.router`). `localho
 Next step is error handling.
 
 ##2. Error handling
-First connect cool logging module [Winston](https://github.com/flatiron/winston). We will make wrapper for it. Run `npm i winston` in project root, then create a folder named `libs/` with `log.js` there.
+First connect a cool logging module [Winston](https://github.com/flatiron/winston). We will make wrapper for it. Run `npm i winston` in project root, then create a folder named `libs/` with `log.js` there.
 
 {% highlight js %}
 var winston = require('winston');
@@ -96,7 +96,7 @@ function getLogger(module) {
 module.exports = getLogger;
 {% endhighlight %}
 
-We created one transport for logging - console. You can separately sort and store logs in different transports, such as a database or file. Connect the logger to `server.js`.
+We created one transport for logging – console. You can separately sort and store logs in different transports, such as a database or file. Connect the logger to `server.js`.
 
 
 {% highlight js %}
@@ -121,9 +121,9 @@ app.listen(1337, function(){
 });
 {% endhighlight %}
 
-Info message now passes through winston to its transport - console.
+Info message now pass through winston to its transport –  theconsole.
 
-Next - 404 and 500 error handling.
+Next – 404 and 500 error handling.
 
 {% highlight js %}
 app.use(function(req, res, next){
@@ -145,10 +145,10 @@ app.get('/ErrorExample', function(req, res, next){
 });
 {% endhighlight %}
 
-Now, if there is no suitable routes, Express will return our message. When an internal error occures - it will be passed to handler, you can check this on `localhost:1337/ErrorExample`.
+Now, if there are no suitable routes, Express will return our message. When an internal error occurs, it will be passed to the handler, you can check it on `localhost:1337/ErrorExample`.
 
 ##3. RESTful API endpoints, CRUD
-Let's add a way to handle some "articles". Implementation will be empty for now, it will be fixed in next step, after connecting a database.
+Let's add a way to handle some "articles". Implementation will be empty for now, it will be fixed in the next step, after connecting to a database.
 
 {% highlight js %}
 app.get('/api/articles', function(req, res) {
@@ -223,9 +223,9 @@ var ArticleModel = mongoose.model('Article', Article);
 module.exports.ArticleModel = ArticleModel;
 {% endhighlight %}
 
-In this file, connection to the database implemented and objects schemas declared. Articles will contain pictures objects. A variety of complex validation can be implemented here as well.
+In this file, connection to the database is implemented and object scheme are declared. Articles will contain picture objects. A variety of complex validation can be implemented here as well.
 
-Here I will use [nconf](https://github.com/flatiron/nconf) module to store there database path. Also let's move there server port number. The module is installed by `npm i nconf`. Custom wrapper will be `libs/config.js`.
+I will use [nconf](https://github.com/flatiron/nconf) module to store there database path. Also, let's move a server port number there. The module is installed by `npm i nconf`. Custom wrapper will be `libs/config.js`.
 
 {% highlight js %}
 var nconf = require('nconf');
@@ -237,7 +237,7 @@ nconf.argv()
 module.exports = nconf;
 {% endhighlight %}
 
-All the settings will be stored in `config.json` at project's root.
+All the settings will be stored in `config.json` at the project's root.
 
 {% highlight json %}
 {
@@ -283,7 +283,8 @@ app.get('/api/articles', function(req, res) {
 });
 
 app.post('/api/articles', function(req, res) {
-    var article = new ArticleModel({
+    var article
+ = new ArticleModel({
         title: req.body.title,
         author: req.body.author,
         description: req.body.description,
@@ -373,9 +374,9 @@ app.delete('/api/articles/:id', function (req, res){
 });
 {% endhighlight %}
 
-Thanks to Mongoose and self-explanatory schemes - all operations are very clear. Now, before running `node.js` we need to run mongoDB server: `mongod`. `mongo` - is client utility for working with the database, the service itself - `monod`.
+All operations are very clear, thanks to Mongoose and self-explanatory scheme. Now, before running our `node.js`, we need to run mongoDB server: `mongod`. `mongo` - is a client utility for working with the database, the service itself is `mongod`.
 
-Examples of requests using httpie:
+Request examples using httpie:
 
 {% highlight bash %}
 http POST http://localhost:1337/api/articles title=TestArticle author='John Doe' description='lorem ipsum dolar sit amet' images:='[{"kind":"thumbnail", "url":"http://habrahabr.ru/images/write-topic.png"}, {"kind":"detail", "url":"http://habrahabr.ru/images/write-topic.png"}]'
@@ -389,14 +390,14 @@ http PUT http://localhost:1337/api/articles/52306b6a0df1064e9d000003 title=TestA
 http DELETE http://localhost:1337/api/articles/52306b6a0df1064e9d000003
 {% endhighlight %}
 
-You can checkout project at this stage from [Github](https://github.com/ealeksandrov/NodeAPI/tree/e8764a97f9c70fb6eae102fda7237e745d9e99ac).
+You can checkout the project at this stage from [Github](https://github.com/ealeksandrov/NodeAPI/tree/e8764a97f9c70fb6eae102fda7237e745d9e99ac).
 
 ##5. Access control — OAuth 2.0, Passport.js
-I will use OAuth 2. Perhaps this is redundant, but in the future, this approach facilitates integration with other OAuth-providers.
+We will use OAuth 2. Perhaps this is redundant, but in the future, this approach facilitates integration with other OAuth-providers.
 
 Module [Passport.js](http://passportjs.org/) will be responsible for access control. For OAuth2 server I will use handy solution from the same author - [OAuth2orize](https://github.com/jaredhanson/oauth2orize). Access tokens will be stored in MongoDB.
 
-First you need to install all the modules that we need:
+First you need to install all the required modules:
 
 * Faker
 * oauth2orize
@@ -405,7 +406,7 @@ First you need to install all the modules that we need:
 * passport-http-bearer
 * passport-oauth2-client-password
 
-Then, you need to add mongoose.js schemes for users and tokens:
+Then, you need to add mongoose.js scheme for users and tokens:
 
 {% highlight js %}
 var crypto = require('crypto');
@@ -433,7 +434,7 @@ var User = new Schema({
 
 User.methods.encryptPassword = function(password) {
     return crypto.createHmac('sha1', this.salt).update(password).digest('hex');
-    //more secure - return crypto.pbkdf2Sync(password, this.salt, 10000, 512);
+    //more secure – return crypto.pbkdf2Sync(password, this.salt, 10000, 512);
 };
 
 User.virtual('userId')
@@ -529,16 +530,16 @@ module.exports.AccessTokenModel = AccessTokenModel;
 module.exports.RefreshTokenModel = RefreshTokenModel;
 {% endhighlight %}
 
-Virtual property `password` is an example of how mongoose model can embed convenient logic. Hashing algorithms and salt - is not this article's theme, so we will not go into the details of implementation.
+Virtual property `password` is an example of how mongoose model can embed convenient logic. Hashing algorithms and salt is not in this article's scope, so we won't dig into the details of the implementation.
 
 DB objects:
 
-1. User - a user who has a name, password hash and a salt.
-2. Client - the client application which requests access on behalf of user, has name and secret code.
-3. AccessToken - token (type of bearer), issued to the client application, limited by time.
-4. RefreshToken - another type of token allows you to request a new bearer-token without re-request a password from the user.
+1. User – a user who has a name, password hash and a salt.
+2. Client – a client application which requests access on behalf of user, has a name and a secret code.
+3. AccessToken – token (type of bearer), issued to the client application, limited by time.
+4. RefreshToken – another type of token allows you to request a new bearer-token without re-request a password from the user.
 
-Add token lifetime in `config.json`:
+Add token lifetime to `config.json`:
 
 {% highlight json %}
 {
@@ -552,7 +553,7 @@ Add token lifetime in `config.json`:
 }
 {% endhighlight %}
 
-I have implemented OAuth2 server and authorization logic in a separate modules. In `auth.js` passport.js stategies described. We connect 3 stategies - 2 for OAuth2 username-password flow and one to check the token.
+I implemented OAuth2 server and authorization logic in separate modules. In `auth.js` passport.js strategies are described. We connect 3 strategies – 2 for OAuth2 username-password flow and one to check the token.
 
 {% highlight js %}
 var config                  = require('./config');
@@ -589,7 +590,8 @@ passport.use(new ClientPasswordStrategy(
     }
 ));
 
-passport.use(new BearerStrategy(
+passport.use(new
+ BearerStrategy(
     function(accessToken, done) {
         AccessTokenModel.findOne({ token: accessToken }, function(err, token) {
             if (err) { return done(err); }
@@ -614,7 +616,7 @@ passport.use(new BearerStrategy(
 ));
 {% endhighlight %}
 
-For the issuance and renewal of the token `oauth2.js` is responsible. One token exchange strategy is for username-password flow, another - for refresh tokens.
+`oauth2.js` is responsible for the issuance and renewal of the token. One token exchange strategy is for username-password flow, another is to refresh tokens.
 
 {% highlight js %}
 var oauth2orize         = require('oauth2orize');
@@ -700,7 +702,7 @@ exports.token = [
 ]
 {% endhighlight %}
 
-Connect these modules to server.js:
+Connect these modules with server.js:
 
 {% highlight js %}
 var oauth2 = require('./libs/oauth2');
@@ -725,7 +727,7 @@ app.get('/api/userInfo',
 
 For example, the access is restricted on `localhost:1337/api/userInfo`.
 
-To check the auth logic - we should create the user and the client database. Use this node application, which will create the necessary objects and remove redundant from collections. It helps quickly clean the tokens and users for testing.
+To check the auth logic we should create a user and a client in our database. Use this node application, which will create the necessary objects and remove redundant from collections. It helps quickly clean the tokens and users for testing.
 
 {% highlight js %}
 var log                 = require('./libs/log')(module);
@@ -782,10 +784,10 @@ http http://localhost:1337/api/userinfo Authorization:'Bearer TOKEN'
 {% endhighlight %}
 
 __Attention!__ On production always use HTTPS, it is implicit by OAuth 2 specification. And do not forget to do correct password hashing.
-Let me remind that working example you can find in the repository on [GitHub](https://github.com/ealeksandrov/NodeAPI).
+Let me remind that you can find the working example at the repository on [GitHub](https://github.com/ealeksandrov/NodeAPI).
 
 To start example project you should run `npm install` in project root, then run `mongod`, `node dataGen.js` (wait for completion), and then `node server.js`.
 
-If any part of the article is worth to describe in more detail, please indicate this in the comments.
+If any part of the article is worth to be described more clearly, please post a comment.
 
-To summarize, I want to say that node.js is great, convenient server solution. With MongoDB document-oriented approach - very unusual, but certainly a useful tool, most of the features that I have not used yet. Node.js have a very large community and there are many open-source development. For example, the creator of oauth2orize and passport.js - Jared Hanson make wonderful projects that facilitate the implementation of the most well-protected systems.
+To summarize, I want to say that node.js is a great, convenient server solution. MongoDB document-oriented approach is a very unusual, but certainly a useful tool. It also has a lot of features that I have not used yet. Node.js has a very large community and there are many open-source projects that come along. For example, the creator of the oauth2orize and passport.js, Jared Hanson makes wonderful projects that facilitate the implementation of the most well-protected systems.
