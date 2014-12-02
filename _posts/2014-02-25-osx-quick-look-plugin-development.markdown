@@ -14,7 +14,7 @@ This is how profile folder looks without any custom Quick Look plugins:
 
 Manual profile selection may be sometimes required. In TestFlight autouploading script, for example. Choosing right profile from this pile of identical icons is quite a problem.
 
-As a first solution, I started using the open-source [Provisioning] project (https://github.com/chockenberry/Provisioning), then closed-source (but more beautiful and detailed) [ipaql](http://ipaql.com/). Need in own open solution arisen after the `ipaql` maintainer added OS X Mavericks compatibility only six months after the release and still repairing apps' icons generation.
+As a first solution, I started using the open-source [Provisioning](https://github.com/chockenberry/Provisioning) project, then closed-source (but more beautiful and detailed) [ipaql](http://ipaql.com/). Need in own open solution arisen after the `ipaql` maintainer added OS X Mavericks compatibility only six months after the release and still repairing apps' icons generation.
 
 Here's what I got - [ProvisionQL](https://github.com/ealeksandrov/ProvisionQL). 
 Supported file types for thumbnails and previews generation:
