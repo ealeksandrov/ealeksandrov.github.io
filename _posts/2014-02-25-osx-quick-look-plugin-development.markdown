@@ -10,7 +10,7 @@ I am iOS and OSX app developer. First time I ever encountered QL plugin is when 
 
 This is how profile folder looks without any custom Quick Look plugins:
 
-![Default appearance](http://habr.habrastorage.org/post_images/e6b/c27/954/e6bc27954e16155b9446e6cac70d6650.png)
+![Default appearance](/static/article-ql/01.png)
 
 Manual profile selection may be sometimes required. In TestFlight autouploading script, for example. Choosing right profile from this pile of identical icons is quite a problem.
 
@@ -24,7 +24,7 @@ Supported file types for thumbnails and previews generation:
 * `mobileprovision` - iOS provisioning profile 
 * `provisionprofile` - OSX provisioning profile
 
-![ProvisionQL appearance](http://habr.habrastorage.org/post_images/0f6/f4f/73b/0f6f4f73b390b67960df8688bb72347c.png)
+![ProvisionQL appearance](/static/article-ql/02.png)
 
 In this article I will tell about main stages of creating custom QL plugins.
 
@@ -34,7 +34,7 @@ In this article I will tell about main stages of creating custom QL plugins.
 
 Create a new project in Xcode: `File > New > Project… OS X > System plug-in > Quick Look Plug-in`. In base template go straight to `Info.plist`:
 
-![Info.plist settings](http://habr.habrastorage.org/post_images/9c9/2b3/651/9c92b365174c0f9314c4d05c09035527.png)
+![Info.plist settings](/static/article-ql/03.png)
 
 Unfold `CFBundleDocumentTypes` and add desired file types in `LSItemContentTypes` array. If you want to generate small icons in lists and tables, change `QLThumbnailMinimumSize` from 17 to 16. Note `QLPreviewHeight` and `QLPreviewWidth` properties — they are used when generator takes too long to generate a preview. In my case – with `ipa` – extraction of multiple files from a zip file is required, which is quite a long task (0,06 – 0,12 s), so system always uses these plist properties. If your generator will generate a file quickly — qlmanage will use dimensions of an image or a HTML you return.
 
@@ -75,7 +75,7 @@ int expirationStatus(NSDate *date, NSCalendar *calendar);
 
 Final ProvisionQL project structure:
 
-![Project structure](http://habr.habrastorage.org/post_images/79d/321/f4c/79d321f4ce77bc5ed2052f44e53ecfd4.png)
+![Project structure](/static/article-ql/04.png)
 
 `NSBezierPath+IOS7RoundedRect` — function for masking icon with iOS7-style rounded corners. `Install.sh` — autoinstall script for generator:
 
@@ -94,15 +94,15 @@ echo "$PRODUCT installed in $QL_PATH"
 
 To run it, go to Target settings, select `Editor > Add Build Phase > Add Run Script Build Phase` and enter the path to the script in the project folder:
 
-![Adding script build phase](http://habr.habrastorage.org/post_images/d25/0ac/83d/d250ac83d06df5facc66fe4eabc5435a.png)
+![Adding script build phase](/static/article-ql/05.png)
 
 You may need to debug the plugin. Because it is not an executable itself, you must go to project scheme settings – Edit Scheme... > Run > Info > Executable > Other > press `Cmd + Shft + G` > `/usr/bin/` > Go > `qlmanage`:
 
-![Adding executable to run](http://habr.habrastorage.org/post_images/f9d/ed0/4bb/f9ded04bb92c43b4fb9d546746a7b88b.png)
+![Adding executable to run](/static/article-ql/06.png)
 
 Then, in the Arguments tab, specify the arguments: starting with `-t` (for thumnails debugging) or `-p` (for preview debugging), following with full path to the test file (in example case I'm testing thumbnail generation for `.ipa`):
 
-![Adding executable args](http://habr.habrastorage.org/post_images/e73/e5e/876/e73e5e876689ef366e8e5d71ad4d7933.png)
+![Adding executable args](/static/article-ql/07.png)
 
 ##Thumbnails generation
 
