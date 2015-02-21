@@ -6,7 +6,7 @@ date: 2014-02-25 16:40:00 +0400
 
 Quick Look — OS X service that creates thumbnails and previews for files in Finder. It supports a number of standard file types, for others there are QL plugins — custom thumbnails and preview generators. They have .qlgenerator extension and can be placed in `~/Library/QuickLook` or `/Library/QuickLook`.
 
-In this article I will tell about main stages of creating custom QL plugins.
+In this article, I will tell about main stages of creating custom QL plugins.
 
 <!-- more -->
 
@@ -102,13 +102,13 @@ You may need to debug the plugin. Because it is not an executable itself, you mu
 
 ![Adding executable to run](/static/article-ql/06.png)
 
-Then, in the Arguments tab, specify the arguments: starting with `-t` (for thumnails debugging) or `-p` (for preview debugging), following with full path to the test file (in example case I'm testing thumbnail generation for `.ipa`):
+Then, in the Arguments tab, specify the arguments: starting with `-t` (for thumbnails debugging) or `-p` (for preview debugging), following with full path to the test file (in example case I'm testing thumbnail generation for `.ipa`):
 
 ![Adding executable args](/static/article-ql/07.png)
 
 ##Thumbnails generation
 
-In this example I will show how to display a dummy icon ([defaultIcon.png](https://raw2.github.com/ealeksandrov/ProvisionQL/master/ProvisionQL/Resources/defaultIcon.png)). In ProvisionQL you can check out implementation for `ipa` file extraction, as well as displaying the number of devices and the status of the provision.
+In this example I will show how to display a dummy icon ([defaultIcon.png](https://raw2.github.com/ealeksandrov/ProvisionQL/master/ProvisionQL/Resources/defaultIcon.png)). In ProvisionQL, you can check out an implementation for `ipa` file extraction, as well as displaying the number of devices and the status of the provision.
 
 This is `GenerateThumbnailForURL.m`:
 
@@ -173,7 +173,7 @@ Note some things:
 
 ##Preview generation
 
-In the example we will fill and return a HTML file as a preview. First, prepare your `template.html` (you can also include styles there).
+In the example, we will fill and return an HTML file as a preview. First, prepare your `template.html` (you can also include styles there).
 
 {% highlight html %}
 <!DOCTYPE html>
@@ -263,7 +263,7 @@ void CancelPreviewGeneration(void *thisInterface, QLPreviewRequestRef preview) {
 }
 {% endhighlight %}
 
-As you can see, at first we open `Info.plist` (or extract it from the archive if needed), then process some data from it in the `synthesizedInfo`. All keys of the `synthesizedInfo` are filled respectively in keys loaded from `template.html`. This string is returned tothe `qlmanage` alongside with parameters describing the return type of the data as an HTML.
+As you can see, at first we open `Info.plist` (or extract it from the archive if needed), then process some data from it in the `synthesizedInfo`. All keys of the `synthesizedInfo` are filled respectively in keys loaded from `template.html`. This string is returned to the `qlmanage` alongside with parameters describing the return type of the data as an HTML.
 
 ##Conclusion
 

@@ -74,7 +74,7 @@ Now `localhost:1337/api` returns our message (handled by `app.router`). `localho
 Next step is error handling.
 
 ##<a name="Step2"></a>2. Error handling
-First connect a cool logging module [Winston](https://github.com/flatiron/winston). We will make wrapper for it. Run `npm i winston` in project root, then create a folder named `libs/` with `log.js` there.
+First connect a cool logging module [Winston](https://github.com/flatiron/winston). We will make a wrapper for it. Run `npm i winston` in project root, then create a folder named `libs/` with `log.js` there.
 
 {% highlight js %}
 var winston = require('winston');
@@ -121,7 +121,7 @@ app.listen(1337, function(){
 });
 {% endhighlight %}
 
-Info message now pass through winston to its transport –  theconsole.
+Info message now passes through Winston to its transport – the console.
 
 Next – 404 and 500 error handling.
 
@@ -172,7 +172,7 @@ app.delete('/api/articles/:id', function (req, res){
 });
 {% endhighlight %}
 
-To test post/put/delete I am advising wonderful wrapper over cURL - [httpie](https://github.com/jkbr/httpie). I will give examples of requests by using this tool.
+To test post/put/delete I am advising a wonderful wrapper over cURL - [httpie](https://github.com/jkbr/httpie). I will give examples of requests by using this tool.
 
 ##<a name="Step4"></a>4. MongoDB & Mongoose.js
 Choosing a database, I was guided by the desire to once again explore something new. [MongoDB](http://www.mongodb.org/) - the most popular NoSQL document-oriented database. [Mongoose.js](http://mongoosejs.com/) - wrapper, allowing to create comfortable and functional schema documents.
@@ -374,7 +374,7 @@ app.delete('/api/articles/:id', function (req, res){
 });
 {% endhighlight %}
 
-All operations are very clear, thanks to Mongoose and self-explanatory scheme. Now, before running our `node.js`, we need to run mongoDB server: `mongod`. `mongo` - is a client utility for working with the database, the service itself is `mongod`.
+All operations are very clear, thanks to Mongoose and self-explanatory scheme. Now, before running our `node.js`, we need to run MongoDB server: `mongod`. `mongo` - is a client utility for working with the database, the service itself is `mongod`.
 
 Request examples using httpie:
 
@@ -393,9 +393,9 @@ http DELETE http://localhost:1337/api/articles/52306b6a0df1064e9d000003
 You can checkout the project at this stage from [Github](https://github.com/ealeksandrov/NodeAPI/tree/e8764a97f9c70fb6eae102fda7237e745d9e99ac).
 
 ##<a name="Step5"></a>5. Access control — OAuth 2.0, Passport.js
-We will use OAuth 2. Perhaps this is redundant, but in the future, this approach facilitates integration with other OAuth-providers.
+We will use OAuth 2. Perhaps this is redundant, but in the future, this approach facilitates an integration with other OAuth-providers.
 
-Module [Passport.js](http://passportjs.org/) will be responsible for access control. For OAuth2 server I will use handy solution from the same author - [OAuth2orize](https://github.com/jaredhanson/oauth2orize). Access tokens will be stored in MongoDB.
+Module [Passport.js](http://passportjs.org/) will be responsible for access control. For OAuth2 server, I will use handy solution from the same author - [OAuth2orize](https://github.com/jaredhanson/oauth2orize). Access tokens will be stored in MongoDB.
 
 First you need to install all the required modules:
 
@@ -535,7 +535,7 @@ Virtual property `password` is an example of how mongoose model can embed conven
 DB objects:
 
 1. User – a user who has a name, password hash and a salt.
-2. Client – a client application which requests access on behalf of user, has a name and a secret code.
+2. Client – a client application which requests access on behalf of a user, has a name and a secret code.
 3. AccessToken – token (type of bearer), issued to the client application, limited by time.
 4. RefreshToken – another type of token allows you to request a new bearer-token without re-request a password from the user.
 
@@ -631,7 +631,7 @@ var RefreshTokenModel   = require('./mongoose').RefreshTokenModel;
 // create OAuth 2.0 server
 var server = oauth2orize.createServer();
 
-// Exchange username & password for access token.
+// Exchange username & password for an access token.
 server.exchange(oauth2orize.exchange.password(function(client, username, password, scope, done) {
     UserModel.findOne({ username: username }, function(err, user) {
         if (err) { return done(err); }
@@ -660,7 +660,7 @@ server.exchange(oauth2orize.exchange.password(function(client, username, passwor
     });
 }));
 
-// Exchange refreshToken for access token.
+// Exchange refreshToken for an access token.
 server.exchange(oauth2orize.exchange.refreshToken(function(client, refreshToken, scope, done) {
     RefreshTokenModel.findOne({ token: refreshToken }, function(err, token) {
         if (err) { return done(err); }
@@ -717,7 +717,7 @@ app.get('/api/userInfo',
     passport.authenticate('bearer', { session: false }),
         function(req, res) {
             // req.authInfo is set using the `info` argument supplied by
-            // `BearerStrategy`.  It is typically used to indicate scope of the token,
+            // `BearerStrategy`.  It is typically used to indicate a scope of the token,
             // and used in access control checks.  For illustrative purposes, this
             // example simply returns the scope in the response.
             res.json({ user_id: req.user.userId, name: req.user.username, scope: req.authInfo.scope })
@@ -727,7 +727,7 @@ app.get('/api/userInfo',
 
 For example, the access is restricted on `localhost:1337/api/userInfo`.
 
-To check the auth logic we should create a user and a client in our database. Use this node application, which will create the necessary objects and remove redundant from collections. It helps quickly clean the tokens and users for testing.
+To check the auth logic, we should create a user and a client in our database. Use this node application, which will create the necessary objects and remove redundant from collections. It helps quickly clean the tokens and users for testing.
 
 {% highlight js %}
 var log                 = require('./libs/log')(module);
@@ -783,11 +783,11 @@ http POST http://localhost:1337/oauth/token grant_type=refresh_token client_id=m
 http http://localhost:1337/api/userinfo Authorization:'Bearer TOKEN'
 {% endhighlight %}
 
-__Attention!__ On production always use HTTPS, it is implicit by OAuth 2 specification. And do not forget to do correct password hashing.
+__Attention!__ On production always use HTTPS, it is implicit in OAuth 2 specification. And do not forget to do correct password hashing.
 Let me remind that you can find the working example at the repository on [GitHub](https://github.com/ealeksandrov/NodeAPI).
 
-To start example project you should run `npm install` in project root, then run `mongod`, `node dataGen.js` (wait for completion), and then `node server.js`.
+To start example project, you should run `npm install` in project root, then run `mongod`, `node dataGen.js` (wait for completion), and then `node server.js`.
 
-If any part of the article is worth to be described more clearly, please post a comment.
+If any part of the article is worth to be described more clearly, please contact me by email or twitter.
 
 To summarize, I want to say that node.js is a great, convenient server solution. MongoDB document-oriented approach is a very unusual, but certainly a useful tool. It also has a lot of features that I have not used yet. Node.js has a very large community and there are many open-source projects that come along. For example, the creator of the oauth2orize and passport.js, Jared Hanson makes wonderful projects that facilitate the implementation of the most well-protected systems.
