@@ -1,13 +1,41 @@
-<div class="three columns contact first">
-  <p>
-    {{ site.theme.name }}<br />
-    {{ site.theme.whoyouare }}<br />
-    {{ site.theme.email }}
-  </p>
-</div>
-<div class="three columns contact">
-  <p>
-    <a href="https://github.com/{{ site.theme.social.github }}">github.com/{{ site.theme.social.github }}</a><br />
-    <a href="https://twitter.com/{{ site.theme.social.twitter }}">twitter.com/{{ site.theme.social.twitter }}</a><br />
-  </p>
-</div>
+<footer class="site-footer">
+
+  <div class="wrapper">
+    <h2 class="footer-heading">{{ site.about.name }}</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-1">
+        <ul class="contact-list">
+          <li>{{ site.about.whoyouare }}</li>
+          <li><a href="mailto:{{ site.about.email }}">{{ site.about.email }}</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-2">
+        <ul class="social-media-list">
+          {% if site.social.github %}
+          <li>
+            <a href="https://github.com/{{ site.social.github }}">
+              <span class="username">github.com/{{ site.social.github }}</span>
+            </a>
+          </li>
+          {% endif %}
+
+          {% if site.social.twitter %}
+          <li>
+            <a href="https://twitter.com/{{ site.social.twitter }}">
+              <span class="username">twitter.com/{{ site.social.twitter }}</span>
+            </a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-3">
+        <p class="text">{{ site.description }}</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>

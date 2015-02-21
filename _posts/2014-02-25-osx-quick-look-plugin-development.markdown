@@ -6,6 +6,10 @@ date: 2014-02-25 16:40:00 +0400
 
 Quick Look — OS X service that creates thumbnails and previews for files in Finder. It supports a number of standard file types, for others there are QL plugins — custom thumbnails and preview generators. They have .qlgenerator extension and can be placed in `~/Library/QuickLook` or `/Library/QuickLook`.
 
+In this article I will tell about main stages of creating custom QL plugins.
+
+<!-- more -->
+
 I am iOS and OSX app developer. First time I ever encountered QL plugin is when I saw Craig Hockenberry's [Provisioning](https://github.com/chockenberry/Provisioning) preview generator for .mobileprovision files (`.mobileprovision`/`.provisionprofile` - profile containing certificates, device ids and other parameters needed for iOS & OSX app deployment).
 
 This is how profile folder looks without any custom Quick Look plugins:
@@ -24,11 +28,9 @@ Supported file types for thumbnails and previews generation:
 * `mobileprovision` - iOS provisioning profile 
 * `provisionprofile` - OSX provisioning profile
 
+And here is the result of QL plugin work:
+
 ![ProvisionQL appearance](/static/article-ql/02.png)
-
-In this article I will tell about main stages of creating custom QL plugins.
-
-<!-- more -->
 
 ##Project settings
 

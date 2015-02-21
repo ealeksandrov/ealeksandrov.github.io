@@ -1,13 +1,26 @@
 ---
 layout: default
-title: Blog Posts
 ---
 
-<div id="home" class="indexPage">
-  <h1><i class="fa fa-bookmark"></i> Blog Posts</h1>
-  <ul class="posts">
-    {% for post in site.posts %}
-      <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
+<div class="home">
+
+  <h1 class="page-heading">Latest Posts</h1>
+
+  <ul class="post-list">
+    {% for post in site.posts limit:3 %}
+      <li>
+        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+
+        <h2>
+          <a class="post-link" href="{{ post.url }}">{{ post.title }}</a>
+        </h2>
+        {{ post.excerpt }}
+        
+        [ <a href="{{ post.url }}">Continue reading…</a> ]
+      </li>
     {% endfor %}
   </ul>
+  
+  <a href="/blog/">Blog Archive</a>
+
 </div>

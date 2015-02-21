@@ -1,29 +1,36 @@
 url: http://aleksandrov.ws
-name: aleksandrov.ws
+title: aleksandrov.ws
 markdown: redcarpet
 highlighter: pygments
 permalink: pretty
 
+excerpt_separator: "<!-- more -->"
+
 gems:
   - jekyll-sitemap
 
-theme:
+social:
+  github: ealeksandrov
+  bitbucket: ealeks
+  skype: evgeny-aleksandrov
+  stackexchange: 447136
+  stackoverflow: 840588
+  twitter: ealeksandrov
+  facebook: evgeny.aleksandrov.14
+  vk: 8475152
+  linkedin: evgeny-aleksandrov/62/680/956
+  gplus: 106054359575752422060
+
+about:
   name: Evgeny Aleksandrov
   whoyouare: iOS developer
   email: evgeny@aleksandrov.ws
 
-  social:
-    github: ealeksandrov
-    bitbucket: ealeks
-    skype: evgeny-aleksandrov
-    stackexchange: 447136
-    stackoverflow: 840588
-    twitter: ealeksandrov
-    facebook: evgeny.aleksandrov.14
-    vk: 8475152
-    linkedin: evgeny-aleksandrov/62/680/956
-    gplus: 106054359575752422060
+google_analytics:
+  key: UA-46367444-1
+  URL: aleksandrov.ws
 
-  # Google Analytics key, leave blank to ignore
-  google_analytics_key: UA-46367444-1
-  google_analytics_URL: aleksandrov.ws
+#description: > # this means to ignore newlines until "baseurl:"
+#  Write an awesome description for your new site here. You can edit this
+#  line in _config.yml. It will appear in your document head meta (for
+#  Google search results) and in your feed.xml site description.
