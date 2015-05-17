@@ -445,8 +445,8 @@ User.virtual('userId')
 User.virtual('password')
     .set(function(password) {
         this._plainPassword = password;
-        this.salt = crypto.randomBytes(32).toString('base64');
-        //more secure - this.salt = crypto.randomBytes(128).toString('base64');
+        this.salt = crypto.randomBytes(32).toString('hex');
+        //more secure - this.salt = crypto.randomBytes(128).toString('hex');
         this.hashedPassword = this.encryptPassword(password);
     })
     .get(function() { return this._plainPassword; });
@@ -645,8 +645,8 @@ server.exchange(oauth2orize.exchange.password(function(client, username, passwor
             if (err) return done(err);
         });
 
-        var tokenValue = crypto.randomBytes(32).toString('base64');
-        var refreshTokenValue = crypto.randomBytes(32).toString('base64');
+        var tokenValue = crypto.randomBytes(32).toString('hex');
+        var refreshTokenValue = crypto.randomBytes(32).toString('hex');
         var token = new AccessTokenModel({ token: tokenValue, clientId: client.clientId, userId: user.userId });
         var refreshToken = new RefreshTokenModel({ token: refreshTokenValue, clientId: client.clientId, userId: user.userId });
         refreshToken.save(function (err) {
@@ -678,8 +678,8 @@ server.exchange(oauth2orize.exchange.refreshToken(function(client, refreshToken,
                 if (err) return done(err);
             });
 
-            var tokenValue = crypto.randomBytes(32).toString('base64');
-            var refreshTokenValue = crypto.randomBytes(32).toString('base64');
+            var tokenValue = crypto.randomBytes(32).toString('hex');
+            var refreshTokenValue = crypto.randomBytes(32).toString('hex');
             var token = new AccessTokenModel({ token: tokenValue, clientId: client.clientId, userId: user.userId });
             var refreshToken = new RefreshTokenModel({ token: refreshTokenValue, clientId: client.clientId, userId: user.userId });
             refreshToken.save(function (err) {
