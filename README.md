@@ -1,4 +1,4 @@
-# http://aleksandrov.ws
+# https://aleksandrov.ws
 
 The personal website of Evgeny Aleksandrov. Built using Jekyll and GitHub Pages.
 
