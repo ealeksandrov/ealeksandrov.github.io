@@ -1,6 +1,6 @@
 url: https://aleksandrov.ws
 title: aleksandrov.ws
-markdown: redcarpet
+markdown: kramdown
 highlighter: pygments
 permalink: pretty
 
