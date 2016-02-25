@@ -32,7 +32,7 @@ And here is the result of QL plugin work:
 
 ![ProvisionQL appearance](/static/article-ql/02.png)
 
-##Project settings
+## Project settings
 
 Create a new project in Xcode: `File > New > Project… OS X > System plug-in > Quick Look Plug-in`. In base template go straight to `Info.plist`:
 
@@ -42,14 +42,14 @@ Unfold `CFBundleDocumentTypes` and add desired file types in `LSItemContentTypes
 
 Next, if you prefer obj-c and Foundation classes — rename `GenerateThumbnailForURL.c` and `GeneratePreviewForURL.c` to `GenerateThumbnailForURL.m` and `GeneratePreviewForURL.m` and add Foundation headers there:
 
-{% highlight obj-c %}
+{% highlight objc %}
 #import <Foundation/Foundation.h>
 #import <Cocoa/Cocoa.h>
 {% endhighlight %}
 
 I need to generate both thumbnails (GenerateThumbnailForURL) and preview (GeneratePreviewForURL), so I defined common imports and functions in `Shared.h/m`. Here is my `Shared.h`:
 
-{% highlight obj-c %}
+{% highlight objc %}
 #include <CoreFoundation/CoreFoundation.h>
 #include <CoreServices/CoreServices.h>
 #include <QuickLook/QuickLook.h>
@@ -106,13 +106,13 @@ Then, in the Arguments tab, specify the arguments: starting with `-t` (for thumb
 
 ![Adding executable args](/static/article-ql/07.png)
 
-##Thumbnails generation
+## Thumbnails generation
 
 In this example I will show how to display a dummy icon ([defaultIcon.png](https://raw2.github.com/ealeksandrov/ProvisionQL/master/ProvisionQL/Resources/defaultIcon.png)). In ProvisionQL, you can check out an implementation for `ipa` file extraction, as well as displaying the number of devices and the status of the provision.
 
 This is `GenerateThumbnailForURL.m`:
 
-{% highlight obj-c %}
+{% highlight objc %}
 #import "Shared.h"
 
 OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thumbnail, CFURLRef url, CFStringRef contentTypeUTI, CFDictionaryRef options, CGSize maxSize);
@@ -171,7 +171,7 @@ Note some things:
 * you can't use `NSImage imageNamed:` - this method will look for the resource in qlmanage's (executable file) bundle, not in our plugin 
 * check `QLThumbnailRequestIsCancelled(thumbnail)` before any time-consuming operation
 
-##Preview generation
+## Preview generation
 
 In the example, we will fill and return an HTML file as a preview. First, prepare your `template.html` (you can also include styles there).
 
@@ -192,7 +192,7 @@ In the example, we will fill and return an HTML file as a preview. First, prepar
 Everything inside the `__KEY__` will be filled with the generator.
 Here is our final `GeneratePreviewForURL.m`:
 
-{% highlight obj-c %}
+{% highlight objc %}
 #import "Shared.h"
 
 OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview, CFURLRef url, CFStringRef contentTypeUTI, CFDictionaryRef options);
@@ -265,7 +265,7 @@ void CancelPreviewGeneration(void *thisInterface, QLPreviewRequestRef preview) {
 
 As you can see, at first we open `Info.plist` (or extract it from the archive if needed), then process some data from it in the `synthesizedInfo`. All keys of the `synthesizedInfo` are filled respectively in keys loaded from `template.html`. This string is returned to the `qlmanage` alongside with parameters describing the return type of the data as an HTML.
 
-##Conclusion
+## Conclusion
 
 Following this guide, you can quickly create a plugin for quick preview and icons generating for your proprietary format or to any common format, which is not handled by the system.
 

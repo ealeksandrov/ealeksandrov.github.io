@@ -10,7 +10,7 @@ Here I will show quick and convenient way to manage project compile-time depende
 
 <!-- more -->
 
-##Configs structure
+## Configs structure
 
 Add new configs in Xcode: `File > New > File… > Other > Configuration Settings File`.
 
@@ -18,7 +18,7 @@ Add new configs in Xcode: `File > New > File… > Other > Configuration Settings
 
 Most configuration values will be stored in `shared.xcconfig`:
 
-{% highlight obj-c %}
+{% highlight objc %}
 WF_APPLICATION_ID = @"827118463"
 
 WF_BUNDLE_VERSION = 2.0.0
@@ -38,7 +38,7 @@ WF_ALLOW_INVALID_SSL = NO
 
 And only ones that different to build configuration will be overridden, like in `staging.xcconfig`:
 
-{% highlight obj-c %}
+{% highlight objc %}
 #include "shared.xcconfig"
 
 WF_API_BASEURL = @"api.example-staging.com"
@@ -49,28 +49,28 @@ WF_ALLOW_INVALID_SSL = YES
 
 Translation in preprocessor macro will happen in `generator.xcconfig`:
 
-{% highlight obj-c %}
+{% highlight objc %}
 // This is the config which will generate GCC_Preprocessor macroses. It is icluded from debug/release/production configs
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) WF_APPLICATION_ID='$(WF_APPLICATION_ID)' WF_BUNDLE_VERSION='$(WF_BUNDLE_VERSION)' WF_BUNDLE_IDENTIFIER='$(WF_BUNDLE_IDENTIFIER)' WF_BUNDLE_DISPLAYNAME='$(WF_BUNDLE_DISPLAYNAME)' WF_API_BASEPROTOCOL='$(WF_API_BASEPROTOCOL)' WF_API_BASEURL='$(WF_API_BASEURL)' WF_API_VERSION='$(WF_API_VERSION)' WF_FLURRY_KEY='$(WF_FLURRY_KEY)' WF_KEYCHAIN_SERVICE='$(WF_KEYCHAIN_SERVICE)' WF_ALLOW_INVALID_SSL='$(WF_ALLOW_INVALID_SSL)'
 {% endhighlight %}
 
 You can see, for each value we adding `VALUE='$(VALUE)'` to `GCC_PREPROCESSOR_DEFINITIONS` string.
 
-##Swift
+## Swift
 
 Bridging header is needed to access preprocessor definitions from Swift code. It can be empty if you don't use any obj-c sources.
 
-##Project settings
+## Project settings
 
 ![Configurations in Xcode project settings](/static/article-config/02.png)
 
 Open `Project > Info > Configurations` and select there corresponding configs. I have CocoaPods project, so I am adding this configurations on project-level, not target-level.
 
-##Usage
+## Usage
 
 You can use macros everywhere in your code, you don't have to import anything:
 
-{% highlight obj-c %}
+{% highlight objc %}
 static NSString * const kPromoKeychainServiceString = WF_KEYCHAIN_SERVICE;
 static NSString * const kBaseURLString = WF_API_BASEPROTOCOL @"://" WF_API_BASEURL @"/" WF_API_VERSION @"/";
 
@@ -81,6 +81,6 @@ Also, I like to move some values from Info.plist (like bundle version and displa
 
 ![Configurations in Info.plist](/static/article-config/03.png)
 
-##Acknowledgments
+## Acknowledgments
 
 Thanks to [Paul Taykalo](https://github.com/PaulTaykalo) for sharing this way of managing configurations.

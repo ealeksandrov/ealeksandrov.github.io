@@ -13,7 +13,7 @@ This article will consider building a REST API for mobile applications using [No
 
 <!-- more -->
 
-##Contents
+## Contents
 
 1. [Node.js + Express.js, simple web-server](#Step1)
 2. [Error handling](#Step2)
@@ -25,7 +25,7 @@ I am working on OSX. IDE is [JetBrains WebStorm](http://www.jetbrains.com/websto
 
 You can grab a final project from [GitHub](https://github.com/ealeksandrov/NodeAPI). Run `npm install` in projects folder for installation of all required modules.
 
-##<a name="Step1"></a>1. Node.js + Express.js, simple web-server
+## <a name="Step1"></a>1. Node.js + Express.js, simple web-server
 Node.js has a non-blocking i/o. That's great for API services which will be accessed by many clients. Express.js is an advanced, lightweight framework that allows us to quickly describe all the needed API endpoints. It also supports many useful modules.
 
 Let's create a new project with a single file `server.js`. Since the application will rely on Express.js, we'll  install it. Installing third-party modules through Node Package Manager is simple: `npm install modulename` in the project folder.
@@ -73,7 +73,7 @@ Now `localhost:1337/api` returns our message (handled by `app.router`). `localho
 
 Next step is error handling.
 
-##<a name="Step2"></a>2. Error handling
+## <a name="Step2"></a>2. Error handling
 First connect a cool logging module [Winston](https://github.com/flatiron/winston). We will make a wrapper for it. Run `npm i winston` in project root, then create a folder named `libs/` with `log.js` there.
 
 {% highlight js %}
@@ -147,7 +147,7 @@ app.get('/ErrorExample', function(req, res, next){
 
 Now, if there are no suitable routes, Express will return our message. When an internal error occurs, it will be passed to the handler, you can check it on `localhost:1337/ErrorExample`.
 
-##<a name="Step3"></a>3. RESTful API endpoints, CRUD
+## <a name="Step3"></a>3. RESTful API endpoints, CRUD
 Let's add a way to handle some "articles". Implementation will be empty for now, it will be fixed in the next step, after connecting to a database.
 
 {% highlight js %}
@@ -174,7 +174,7 @@ app.delete('/api/articles/:id', function (req, res){
 
 To test post/put/delete I am advising a wonderful wrapper over cURL - [httpie](https://github.com/jkbr/httpie). I will give examples of requests by using this tool.
 
-##<a name="Step4"></a>4. MongoDB & Mongoose.js
+## <a name="Step4"></a>4. MongoDB & Mongoose.js
 Choosing a database, I was guided by the desire to once again explore something new. [MongoDB](http://www.mongodb.org/) - the most popular NoSQL document-oriented database. [Mongoose.js](http://mongoosejs.com/) - wrapper, allowing to create comfortable and functional schema documents.
 
 Download and install [MongoDB](http://www.mongodb.org/downloads). Than, install Mongoose: `npm i mongoose`. I will put database interaction in separate module: `libs/mongoose.js`.
@@ -392,7 +392,7 @@ http DELETE http://localhost:1337/api/articles/52306b6a0df1064e9d000003
 
 You can checkout the project at this stage from [Github](https://github.com/ealeksandrov/NodeAPI/tree/e8764a97f9c70fb6eae102fda7237e745d9e99ac).
 
-##<a name="Step5"></a>5. Access control — OAuth 2.0, Passport.js
+## <a name="Step5"></a>5. Access control — OAuth 2.0, Passport.js
 We will use OAuth 2. Perhaps this is redundant, but in the future, this approach facilitates an integration with other OAuth-providers.
 
 Module [Passport.js](http://passportjs.org/) will be responsible for access control. For OAuth2 server, I will use handy solution from the same author - [OAuth2orize](https://github.com/jaredhanson/oauth2orize). Access tokens will be stored in MongoDB.
