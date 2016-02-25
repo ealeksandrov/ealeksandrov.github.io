@@ -56,6 +56,10 @@ GCC_PREPROCESSOR_DEFINITIONS = $(inherited) WF_APPLICATION_ID='$(WF_APPLICATION_
 
 You can see, for each value we adding `VALUE='$(VALUE)'` to `GCC_PREPROCESSOR_DEFINITIONS` string.
 
+##Swift
+
+Bridging header is needed to access preprocessor definitions from Swift code. It can be empty if you don't use any obj-c sources.
+
 ##Project settings
 
 ![Configurations in Xcode project settings](/static/article-config/02.png)
