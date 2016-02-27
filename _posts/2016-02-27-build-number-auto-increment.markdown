@@ -54,11 +54,11 @@ NSLog(@"Starting %@ v%@ (%@)", bundleId, bundleShortVersion, bundleVersion);
 {% endhighlight %}
 
 {% highlight swift %}
-lazy var bundleId: String = NSBundle.mainBundle().infoDictionary?["CFBundleIdentifier"] as! String
-lazy var bundleShortVersion: String = NSBundle.mainBundle().infoDictionary?["CFBundleShortVersionString"] as! String
-lazy var bundleVersion: String = NSBundle.mainBundle().infoDictionary?["CFBundleVersion"] as! String
+let bundleId = NSBundle.mainBundle().infoDictionary?["CFBundleIdentifier"] as! NSString
+let bundleShortVersion = NSBundle.mainBundle().infoDictionary?["CFBundleShortVersionString"] as! NSString
+let bundleVersion = NSBundle.mainBundle().infoDictionary?["CFBundleVersion"] as! NSString
 
-print("Starting \(self.bundleId) v\(self.bundleShortVersion) (\(self.bundleVersion))")
+print("Starting \(bundleId) v\(bundleShortVersion) (\(bundleVersion))")
 {% endhighlight %}
 
 ## Finding commit for build number
