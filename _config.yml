@@ -3,6 +3,7 @@ title: aleksandrov.ws
 markdown: kramdown
 highlighter: rouge
 permalink: pretty
+index_posts_count: 5
 
 excerpt_separator: "<!-- more -->"
 
