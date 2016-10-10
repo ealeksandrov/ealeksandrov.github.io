@@ -1,0 +1,54 @@
+==================================================================
+https://keybase.io/ealeksandrov
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://aleksandrov.ws
+  * I am ealeksandrov (https://keybase.io/ealeksandrov) on keybase.
+  * I have a public key ASBET7ckYKqMzbVaku2p7WSBU5g1gvMgyNYAVnEa4FbT6go
+
+To do so, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "eldest_kid": "0120444fb72460aa8ccdb55a92eda9ed648153983582f320c8d60056711ae056d3ea0a",
+            "host": "keybase.io",
+            "kid": "0120444fb72460aa8ccdb55a92eda9ed648153983582f320c8d60056711ae056d3ea0a",
+            "uid": "b87c30666dceb131fad34aac714fc119",
+            "username": "ealeksandrov"
+        },
+        "service": {
+            "hostname": "aleksandrov.ws",
+            "protocol": "https:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "client": {
+        "name": "keybase.io go client",
+        "version": "1.0.16"
+    },
+    "ctime": 1476114245,
+    "expire_in": 504576000,
+    "merkle_root": {
+        "ctime": 1476114151,
+        "hash": "424c7d03165060b541e1a80bcf94684076adbce6ee8fed1b2aa561828092a81f882855bcb877eeac6f9f503f463fd49ae4f240be18dc67d1839d1f40da5c1518",
+        "seqno": 671320
+    },
+    "prev": "81877d6ed17c3e3cde6973acb012a5182aa75281171786ae5214c948264b0401",
+    "seqno": 10,
+    "tag": "signature"
+}
+
+which yields the signature:
+
+g6Rib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgRE+3JGCqjM21WpLtqe1kgVOYNYLzIMjWAFZxGuBW0+oKp3BheWxvYWTFAvt7ImJvZHkiOnsia2V5Ijp7ImVsZGVzdF9raWQiOiIwMTIwNDQ0ZmI3MjQ2MGFhOGNjZGI1NWE5MmVkYTllZDY0ODE1Mzk4MzU4MmYzMjBjOGQ2MDA1NjcxMWFlMDU2ZDNlYTBhIiwiaG9zdCI6ImtleWJhc2UuaW8iLCJraWQiOiIwMTIwNDQ0ZmI3MjQ2MGFhOGNjZGI1NWE5MmVkYTllZDY0ODE1Mzk4MzU4MmYzMjBjOGQ2MDA1NjcxMWFlMDU2ZDNlYTBhIiwidWlkIjoiYjg3YzMwNjY2ZGNlYjEzMWZhZDM0YWFjNzE0ZmMxMTkiLCJ1c2VybmFtZSI6ImVhbGVrc2FuZHJvdiJ9LCJzZXJ2aWNlIjp7Imhvc3RuYW1lIjoiYWxla3NhbmRyb3Yud3MiLCJwcm90b2NvbCI6Imh0dHBzOiJ9LCJ0eXBlIjoid2ViX3NlcnZpY2VfYmluZGluZyIsInZlcnNpb24iOjF9LCJjbGllbnQiOnsibmFtZSI6ImtleWJhc2UuaW8gZ28gY2xpZW50IiwidmVyc2lvbiI6IjEuMC4xNiJ9LCJjdGltZSI6MTQ3NjExNDI0NSwiZXhwaXJlX2luIjo1MDQ1NzYwMDAsIm1lcmtsZV9yb290Ijp7ImN0aW1lIjoxNDc2MTE0MTUxLCJoYXNoIjoiNDI0YzdkMDMxNjUwNjBiNTQxZTFhODBiY2Y5NDY4NDA3NmFkYmNlNmVlOGZlZDFiMmFhNTYxODI4MDkyYTgxZjg4Mjg1NWJjYjg3N2VlYWM2ZjlmNTAzZjQ2M2ZkNDlhZTRmMjQwYmUxOGRjNjdkMTgzOWQxZjQwZGE1YzE1MTgiLCJzZXFubyI6NjcxMzIwfSwicHJldiI6IjgxODc3ZDZlZDE3YzNlM2NkZTY5NzNhY2IwMTJhNTE4MmFhNzUyODExNzE3ODZhZTUyMTRjOTQ4MjY0YjA0MDEiLCJzZXFubyI6MTAsInRhZyI6InNpZ25hdHVyZSJ9o3NpZ8RA2nEp4UImwniJ8dY9J4om0eYoO08OrZmOeVUKOhTl5qXokbPyzQTSNiJjRyZFq9V9lQCjVEU9We4HnYuNG6VkB6hzaWdfdHlwZSCjdGFnzQICp3ZlcnNpb24B
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/ealeksandrov
+
+==================================================================
