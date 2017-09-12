@@ -553,7 +553,7 @@ Add token lifetime to `config.json`:
 }
 {% endhighlight %}
 
-I implemented OAuth2 server and authorization logic in separate modules. In `auth.js` passport.js strategies are described. We connect 3 strategies – 2 for OAuth2 username-password flow and one to check the token.
+I implemented OAuth2 server and authorization logic in separate modules. In `auth.js` passport.js strategies are described. We connect 3 strategies – 2 for verifying Client credentials in OAuth2 username-password flow and one to check the token.
 
 {% highlight js %}
 var config                  = require('./config');
@@ -615,6 +615,8 @@ passport.use(new
     }
 ));
 {% endhighlight %}
+
+`BasicStrategy` and `ClientPasswordStrategy` are responsible for `Client` credentials verification. They share similar code because they are interchangeable, we can use one or another. From [OAuth 2.0 spec](https://tools.ietf.org/html/draft-ietf-oauth-v2-27#section-2.3.1) we can see that _"HTTP Basic authentication"_ is required and _"client credentials in the request body"_ is optional (for clients who don't support HTTP Basic auth). We implemented both.
 
 `oauth2.js` is responsible for the issuance and renewal of the token. One token exchange strategy is for username-password flow, another is to refresh tokens.
 
