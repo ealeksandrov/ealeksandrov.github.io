@@ -6,6 +6,6 @@ permalink: /about/
 
 Hi! I am iOS developer working in Kazan, Russia.
 
-For last 6+ years, I am focused on iOS development. I pushed around 15-20 apps to App Store and built a couple of OS X apps. I am active Git user and open source contributor, keeping up-to-date with community.
+For last 7+ years, I am focused on iOS and macOS development. Released more than 20 iOS apps and a few macOS apps. I have strong knowledge of Objective-C and used Swift since first beta. Built a lot of custom UI, transitions and animations on top of UIKit, always striving for clean and seamless user experience. Active Git user and open source contributor, author and maintainer of libs and tools downloaded more than a million times.
 
 Feel free to reach me by [email](mailto:evgeny@aleksandrov.ws) or [twitter](https://twitter.com/ealeksandrov).
